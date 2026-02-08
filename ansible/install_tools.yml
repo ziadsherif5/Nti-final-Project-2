@@ -1,0 +1,43 @@
+---
+- name: Install DevOps Tools (ArgoCD, Monitoring, Uptime Kuma)
+  hosts: localhost
+  connection: local
+  tasks:
+    # 1. ArgoCD
+    - name: Create ArgoCD Namespace
+      kubernetes.core.k8s:
+        name: argocd
+        kind: Namespace
+        state: present
+
+    - name: Install ArgoCD
+      kubernetes.core.k8s:
+        state: present
+        src: https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+        namespace: argocd
+
+    # 2. Prometheus & Grafana (Monitoring)
+    - name: Add Prometheus Helm Repo
+      kubernetes.core.helm_repository:
+        name: prometheus-community
+        repo_url: "https://prometheus-community.github.io/helm-charts"
+
+    - name: Install Kube-Prometheus-Stack
+      kubernetes.core.helm:
+        name: prometheus
+        chart_ref: prometheus-community/kube-prometheus-stack
+        release_namespace: monitoring
+        create_namespace: true
+
+    # 3. Uptime Kuma 
+    - name: Add Uptime Kuma Helm Repo
+      kubernetes.core.helm_repository:
+        name: uptime-kuma
+        repo_url: "https://helm.uptime-kuma.app/"
+
+    - name: Install Uptime Kuma
+      kubernetes.core.helm:
+        name: uptime-kuma
+        chart_ref: uptime-kuma/uptime-kuma
+        release_namespace: uptime-kuma
+        create_namespace: true
