@@ -28,4 +28,17 @@
         chart_ref: prometheus-community/kube-prometheus-stack
         release_namespace: monitoring
         create_namespace: true
+    
+
+    - name: Add Kyverno Helm repo
+      kubernetes.core.helm_repository:
+        name: kyverno
+        repo_url: "https://kyverno.github.io/kyverno/"
+
+    - name: Install Kyverno using Helm
+      kubernetes.core.helm:
+        name: kyverno
+        chart_ref: kyverno/kyverno
+        release_namespace: kyverno
+        create_namespace: true
 
