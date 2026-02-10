@@ -69,6 +69,14 @@ module "eks" {
       min_size       = 2
       max_size       = 4
       desired_size   = 2
+
+      # --- --------------------
+      iam_role_additional_policies = {
+        CloudWatchLogs = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+      }
+      # ------------------------------------
+
+
     }
   }
 
