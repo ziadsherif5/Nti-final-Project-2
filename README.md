@@ -69,19 +69,6 @@ Name: `infra-gitops`
 
 ---
 
-## ✅ Using the project (your 4 commands only)
-
-This repo is GitOps-driven. You don’t need to run Terraform locally.
-
-bash
-git add .
-git status
-git commit -m "update infra"
-git push
-
-
----
-
 ## 🧱 Repository structure (what’s inside)
 
 * `.github/workflows/iac.yml`
@@ -246,18 +233,10 @@ git push
 
 ---
 
-## Sources :
-- GitHub Actions workflow syntax (push paths filter, workflow_dispatch, env, jobs/steps). 
-- AWS GitHub Action for credentials (`aws-actions/configure-aws-credentials`). 
-- HashiCorp setup-terraform GitHub Action. 
-- AWS EKS kubeconfig update (`aws eks update-kubeconfig`) + EKS guide. 
-- Terraform S3 backend documentation. 
-- Terraform AWS Secrets Manager resource docs.
-- Ansible `kubernetes.core` helm modules docs. 
-- Argo CD installation docs + install manifest reference. 
-- ingress-nginx AWS deploy manifest repo reference. 
-- aws-for-fluent-bit chart values + Artifact Hub entry. 
-- kube-prometheus-stack helm repo + chart listing. 
-- Kyverno install via Helm. 
+## References
+- AWS EKS official documentation
+- Terraform AWS provider documentation
+- GitHub Actions documentation
+- Ansible Kubernetes collections
 
 
