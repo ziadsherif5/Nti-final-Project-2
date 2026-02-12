@@ -237,6 +237,21 @@ Name: `infra-gitops`
 - AWS EKS official documentation
 - Terraform AWS provider documentation
 - GitHub Actions documentation
-- Ansible Kubernetes collections
+- Ansible Kubernetes collections\
+
+---
+
+## ✅ Using the Project
+
+This repository follows a **GitOps workflow**. All infrastructure provisioning and platform configuration are executed automatically through **GitHub Actions**.
+
+No local execution of Terraform or Ansible is required.  
+Changes are applied by committing and pushing updates to the repository.
+
+```bash
+git add .
+git status
+git commit -m "Update infrastructure configuration"
+git push
 
 
